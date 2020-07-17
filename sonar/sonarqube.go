@@ -1,6 +1,7 @@
 package sonargo
 
 import (
+	"fmt"
 	"net/http"
 	"net/url"
 
@@ -94,6 +95,8 @@ func (c *Client) NewRequest(method, path string, opt interface{}) (*http.Request
 		req.SetBasicAuth(c.username, c.password)
 	case privateToken:
 		req.SetBasicAuth(c.token, "")
+	case none:
+		req.Header.Set("Referer", fmt.Sprintf("%s://%s/projects?sort=-analysis_date", c.baseURL.Scheme, c.baseURL.Host))
 	}
 	req.Header.Set("User-Agent", userAgent)
 	return req, nil
