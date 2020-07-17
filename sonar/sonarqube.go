@@ -18,6 +18,7 @@ const (
 	basicAuth authType = iota
 	oAuthToken
 	privateToken
+	none
 )
 
 const (
