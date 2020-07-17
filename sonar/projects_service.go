@@ -152,7 +152,7 @@ func (s *ProjectsService) Search(opt *ProjectsSearchOption) (v *ProjectSearchObj
 	if err != nil {
 		return
 	}
-	req, err := s.client.NewRequest("GET", "projects/search", opt)
+	req, err := s.client.NewRequest("GET", "components/search_projects", opt)
 	if err != nil {
 		return
 	}

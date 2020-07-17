@@ -8,8 +8,10 @@ type ComponentsService struct {
 }
 
 type ComponentsSearchObject struct {
-	Components []*Component `json:"components,omitempty"`
-	Paging     *Paging      `json:"paging,omitempty"`
+	Components    []*Component   `json:"components,omitempty"`
+	Paging        *Paging        `json:"paging,omitempty"`
+	Organizations []*interface{} `json:"organizations,omitempty"`
+	Facets        []*interface{} `json:"facets,omitempty"`
 }
 
 type ComponentsShowObject struct {
