@@ -1,6 +1,7 @@
 package sonargo
 
 import (
+	"crypto/tls"
 	"net/http"
 	"net/url"
 )
@@ -43,6 +44,9 @@ type Client struct {
 
 func NewAnonymousClient(endpoint string) (*Client, error) {
 	c := &Client{authType: none, httpClient: http.DefaultClient}
+	customTransport := &(*http.DefaultTransport.(*http.Transport)) // make shallow copy
+	customTransport.TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
+	c.httpClient.Transport = customTransport
 	if endpoint == "" {
 		c.SetBaseURL(defaultBaseURL)
 	} else {
