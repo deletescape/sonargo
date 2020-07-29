@@ -88,6 +88,9 @@ func NewAnonymousClient(endpoint string) (*Client, error) {
 
 func NewClient(endpoint, username, password string) (*Client, error) {
 	c := &Client{username: username, password: password, authType: basicAuth, httpClient: http.DefaultClient}
+	customTransport := &(*http.DefaultTransport.(*http.Transport)) // make shallow copy
+	customTransport.TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
+	c.httpClient.Transport = customTransport
 	if endpoint == "" {
 		c.SetBaseURL(defaultBaseURL)
 	} else {
