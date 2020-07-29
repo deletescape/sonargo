@@ -24,6 +24,7 @@ type Component struct {
 	Description      string          `json:"description,omitempty"`
 	Enabled          bool            `json:"enabled,omitempty"`
 	ID               string          `json:"id,omitempty"`
+	IsFavorite       bool            `json:"isFavorite,omitempty"`
 	Key              string          `json:"key,omitempty"`
 	Language         string          `json:"language,omitempty"`
 	LastAnalysisDate string          `json:"lastAnalysisDate,omitempty"`
