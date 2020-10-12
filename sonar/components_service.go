@@ -40,6 +40,7 @@ type Component struct {
 	UUID             string          `json:"uuid,omitempty"`
 	Version          string          `json:"version,omitempty"`
 	Visibility       string          `json:"visibility,omitempty"`
+	NeedIssueSync    bool            `json:"needIssueSync,omitempty"`
 }
 
 type ComponentsTreeObject struct {
